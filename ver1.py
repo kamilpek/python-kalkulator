@@ -1,13 +1,13 @@
 import Tkinter as tk
 
 kalk = tk.Tk()
-kalk.title("Kalkulator ver. 1")
+kalk.title("Kalkulator ver. 1.2")
 
 buttons = [
 '7',  '8',  '9',  '*', 'C',
 '4',  '5',  '6',  '/', 'ver',
 '1',  '2',  '3',  '-', 'git',
-'0',  '.',  '=',  '+', ' ']
+'0',  '.',  '+',  '=', 'neg']
 
 # set up GUI
 row = 1
@@ -22,58 +22,59 @@ for i in buttons:
         col = 0
         row += 1
 
-display = tk.Entry(kalk, width = 50, bg = "white")  #width = szerokosc panelu wprowadzania '50'
-display.grid(row = 0, column = 0, columnspan = 5)
+wysw = tk.Entry(kalk, width = 50, bg = "white", font = "Helvetica 14 bold")  #width = szerokosc panelu wprowadzania '50'
+wysw.grid(row = 0, column = 0, columnspan = 5)
+wysw.focus()
 
 def click_event(key):
 
 	# = -> calculate results
     if key == '=':
         # safeguard against integer division
-        if '/' in display.get() and '.' not in display.get():
-            display.insert(tk.END, ".0")
+        if '/' in wysw.get() and '.' not in wysw.get():
+            wysw.insert(tk.END, ".0")
 			
         # attempt to evaluate results
         try:
-            result = eval(display.get())
-            display.insert(tk.END, " = " + str(result))
+            result = eval(wysw.get())
+            wysw.insert(tk.END, " = " + str(result))
         except:
-            display.insert(tk.END, "   Error, use only valid chars")
+            wysw.insert(tk.END, "   Error, use only valid chars")
 			
-	# C -> clear display		
+	# C -> czysczenie prompta		
     elif key == 'C':
-        display.delete(0, tk.END)
+        wysw.delete(0, tk.END)
 		
 		
-	# $ -> clear display		
+	# ver -> wyswietlanie wersji programu
     elif key == 'ver':
-        display.delete(0, tk.END)
-        display.insert(tk.END, "Kalkulator ver. 1")
+        wysw.delete(0, tk.END)
+        wysw.insert(tk.END, "Kalkulator ver. 1.2")
 		
 
-	# @ -> clear display		
-    elif key == '@':
-        display.delete(0, tk.END)
-        display.insert(tk.END, "https://github.com/kamilpek/python-kalkulator")		
+	# git -> adres do zdalnego repo na githubie		
+    elif key == 'git':
+        wysw.delete(0, tk.END)
+        wysw.insert(tk.END, "https://github.com/kamilpek/python-kalkulator")		
 
 		
 	# neg -> negate term
     elif key == 'neg':
-        if '=' in display.get():
-            display.delete(0, tk.END)
+        if '=' in wysw.get():
+            wysw.delete(0, tk.END)
         try:
-            if display.get()[0] == '-':
-                display.delete(0)
+            if wysw.get()[0] == '-':
+                wysw.delete(0)
             else:
-                display.insert(0, '-')
+                wysw.insert(0, '-')
         except IndexError:
             pass
 
-	# clear display and start new input		
+	# clear wysw and start new input		
     else:
-        if '=' in display.get():
-            display.delete(0, tk.END)
-        display.insert(tk.END, key)
+        if '=' in wysw.get():
+            wysw.delete(0, tk.END)
+        wysw.insert(tk.END, key)
 
 
 # RUNTIME

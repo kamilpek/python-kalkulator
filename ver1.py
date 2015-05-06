@@ -1,18 +1,18 @@
 import Tkinter as tk
 
 kalk = tk.Tk()
-kalk.title("Kalkulator ver. 1.2")
+kalk.title("Kalkulator ver. 1.3")
 
-buttons = [
+etykiety = [
 '7',  '8',  '9',  '*', 'C',
 '4',  '5',  '6',  '/', 'ver',
-'1',  '2',  '3',  '-', 'git',
-'0',  '.',  '+',  '=', 'neg']
+'1',  '2',  '3',  '-', 'neg',
+'0',  '.',  '+',  '=', '=']
 
 # set up GUI
 row = 1
 col = 0
-for i in buttons:
+for i in etykiety:
     button_style = 'raised'
     action = lambda x = i: click_event(x)
     tk.Button(kalk, text = i, width = 5, height = 5, relief = button_style, command = action) \
@@ -49,7 +49,7 @@ def click_event(key):
 	# ver -> wyswietlanie wersji programu
     elif key == 'ver':
         wysw.delete(0, tk.END)
-        wysw.insert(tk.END, "Kalkulator ver. 1.2")
+        wysw.insert(tk.END, "Kalkulator ver. 1.3")
 		
 
 	# git -> adres do zdalnego repo na githubie		

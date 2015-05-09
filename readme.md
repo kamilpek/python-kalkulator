@@ -1,5 +1,5 @@
 Projekt Python.
 
-Kalkulator ver. 1.3
+Kalkulator ver. 1.5
 
-Aktualizacja 06.05.2015
+Aktualizacja 09.05.2015

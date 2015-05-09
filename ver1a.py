@@ -1,14 +1,13 @@
 import Tkinter as tk
-import math as math
 
 kalk = tk.Tk()
-kalk.title("Kalkulator ver. 1.5")
+kalk.title("Kalkulator ver. 1.3")
 
 etykiety = [
-'7',  '8',  '9',  '*', 'C', 'pi',
-'4',  '5',  '6',  '/', 'ver', 'sqrt',
-'1',  '2',  '3',  '-', 'neg', 'kwadrat',
-'0',  '.',  '+',  '=', '=', '=']
+'7',  '8',  '9',  '*', 'C',
+'4',  '5',  '6',  '/', 'ver',
+'1',  '2',  '3',  '-', 'neg',
+'0',  '.',  '+',  '=', '=']
 
 # ustawienia GUI
 row = 1
@@ -19,14 +18,13 @@ for i in etykiety:
     tk.Button(kalk, text = i, width = 5, height = 5, relief = button_style, command = action) \
 		.grid(row = row, column = col, sticky = 'nesw', )
     col += 1
-    if col > 5:
+    if col > 4:
         col = 0
         row += 1
 
 wysw = tk.Entry(kalk, width = 50, bg = "white", font = "Helvetica 14 bold")  #width = szerokosc panelu wprowadzania '50'
-wysw.grid(row = 0, column = 0, columnspan = 6)
+wysw.grid(row = 0, column = 0, columnspan = 5)
 wysw.focus()
-
 
 def click_event(key):
 
@@ -49,23 +47,7 @@ def click_event(key):
 	# ver -> wyswietlanie wersji programu
     elif key == 'ver':
         wysw.delete(0, tk.END)
-        wysw.insert(tk.END, "Kalkulator ver. 1.5")
-        
-        
-    elif key == 'pi':
-		wysw.insert(tk.END, "3.14159")
-
-    elif key == 'kwadrat':
-		a=int(wysw.get())
-		kwadrat=a*a
-		wysw.delete(0, tk.END)
-		wysw.insert(tk.END, kwadrat)
-		
-    elif key == 'sqrt':
-		a=int(wysw.get())
-		sqrt=math.sqrt(a)
-		wysw.delete(0, tk.END)
-		wysw.insert(tk.END, sqrt)
+        wysw.insert(tk.END, "Kalkulator ver. 1.3")
 
 	# neg -> negate term
     elif key == 'neg':
